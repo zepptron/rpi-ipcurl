@@ -3,6 +3,7 @@ MAINTAINER zepptron <https://github.com/zepptron>
 
 COPY main.py /main.py
 RUN apk update && \
+    apk add ca-certificates && \
     apk add --no-cache python
 
-ENTRYPOINT [ "/usr/bin/python /main.py" ]
+CMD python main.py
