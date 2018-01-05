@@ -6,6 +6,7 @@ from urllib2 import urlopen
 import urllib2
 import time
 import os
+import datetime
 
 ip = 0
 my_ip = load(urlopen('https://api.ipify.org/?format=json'))['ip']
@@ -21,7 +22,6 @@ while True:
         urllib2.urlopen(url_wc).read()
         ip = load(urlopen('https://api.ipify.org/?format=json'))['ip']
         my_ip = load(urlopen('https://api.ipify.org/?format=json'))['ip']
-        print "IP changed to %s" % my_ip
-        print "###" * 10
-        print url_at
-        print "###" * 10
+        ti = time.time()
+        ts = datetime.datetime.fromtimestamp(ti).strftime('%d-%m-%Y %H:%M:%S')
+        print "%s IP changed to %s" % (ts, my_ip)
